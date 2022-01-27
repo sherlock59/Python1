@@ -17,5 +17,6 @@ print()
 print("Miles Per Gallon:\t\t{mpg}")
 print()
 print("Bye!")
+print("Good Bye")
 
 
