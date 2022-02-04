@@ -14,7 +14,7 @@ print("")
 salary_amount = float(input("Enter salary for per hour:\t\t"))
 hours_worked = float(input("Enter hours worked:\t"))
 
-# calculate and present the result
+# calculate and present the result.
 mpg = salary_amount / hours_worked
 mpg = round(mpg, 2)
 
