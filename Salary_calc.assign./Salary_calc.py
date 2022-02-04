@@ -3,7 +3,7 @@
 (''' Description: This project calculates invoice total with discount included based on user's input'
  * Written by: Anaberdi Meredov
  * Date Written: 2022.01.31
- * GitHub:  ''')
+ * GitHub: https://github.com/sherlock59/Python1.git ''')
 
 
 print("Welcome to the Salary Hours Calculator") # displays a welcome message
