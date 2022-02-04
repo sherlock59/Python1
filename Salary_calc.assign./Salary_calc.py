@@ -11,17 +11,18 @@ print("This calculator allows the user to determine hours worked for a whole yea
 print("")
 
 # get input from the user
-salary_amount = float(input("Enter salary for per hour:\t\t"))
-hours_worked = float(input("Enter hours worked:\t"))
+salary_amount = int(input("Enter salary for per hour:\t\t"))
+print('')
+hours_worked_per_day = int(input("Enter hours worked per day:\t\t"))
+print('')
 
 # calculate and present the result...
-mpg = salary_amount / hours_worked
-mpg = round(mpg, 2)
+sph = salary_amount * hours_worked_per_day
+sph = sph * 365
 
-# display the result
-print()
-print("Salary for per year:\t\t{mpg}")
-print()
+# displays the result
+print 'Salary for per year:  ', sph
+print('')
 print("Bye!")
 
 
