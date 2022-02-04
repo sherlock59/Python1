@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 
-print("Welcome to the Salary Calculator") # displays a welcome message
-print("This calculator allows the user to determine the annual salary")  # explain what does this program do
+(''' Description: This project calculates invoice total with discount included based on user's input'
+ * Written by: Anaberdi Meredov
+ * Date Written: 2022.01.31
+ * GitHub: https://github.com/sherlock59/InvoiceApp.git ''')
+
+
+print("Welcome to the Salary Hours Calculator") # displays a welcome message
+print("This calculator allows the user to determine hours worked for a whole year")  # explain what does this program do
 print("")
 
 # get input from the user
@@ -17,6 +23,6 @@ print()
 print("Miles Per Gallon:\t\t{mpg}")
 print()
 print("Bye!")
-print("Good Bye")
+
 
 
