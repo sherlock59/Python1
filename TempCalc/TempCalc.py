@@ -12,15 +12,23 @@ while True:
       input - conversion c or f  # which direction
 
     while True:
-      input - start temp (0)
+      input - start temp (-50, 150)  farhenheit
+      please enter the starting temp (-50, 150):)
 
     while True:
-      input - stop tempfile (100)
+      input - stop temp 100
 
     while True:
-      input - step intervel (10)
+      input - step intervel 10
 
-    for i in range (0 ,10)
+    for i in range (1,11)
+        f-string
+
+    f     c
+    ==== =====
+      0     -5
+      10     0
+      100    40
 
         while True:
             input - y/n ]
