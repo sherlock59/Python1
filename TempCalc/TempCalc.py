@@ -5,6 +5,27 @@ LINE_LENGTH = 50
 print("Welcome to the Temperature Calculator")
 print('=' * LINE_LENGTH)
 
+# 4 while loop
+while True:
+
+    while True:
+      input - conversion c or f  # which direction
+
+    while True:
+      input - start temp (0)
+
+    while True:
+      input - stop tempfile (100)
+
+    while True:
+      input - step intervel (10)
+
+    for i in range (0 ,10)
+
+        while True:
+            input - y/n ]
+
+
 while True:
 
     while True:
