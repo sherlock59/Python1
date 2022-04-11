@@ -5,7 +5,6 @@ LINE_LENGTH = 50
 print("Welcome to the Temperature Calculator")
 print('=' * LINE_LENGTH)
 
-
 while True:
 
     while True:
@@ -14,3 +13,27 @@ while True:
             break
         else:
             print("Entry must be greater than 0. Please try again.")
+
+    is_valid = True
+    while is_valid == True:
+        yearly_interest_rate = float(input("Enter yearly interest rate:\t"))
+        if yearly_interest_rate > 0 and yearly_interest_rate <= 15:
+            is_valid = False
+        else:
+            print("Entry must be greater than 0 and less than or equal to 15. "
+                  "PLease try again.")
+
+    is_valid = True
+    while is_valid == True:
+        years = int(input("Enter number of years:\t\t"))
+        if years > 0 and years <= 50:
+            is_valid = False
+        else:
+            print("Entry must be greater than 0 and less than or equal to 50.\t"
+                  "Please try again.")
+
+    print()
+
+    # convert yearly values to monthly values
+    monthly_interest_rate = yearly_interest_rate / 12 /100
+    months = years * 12
