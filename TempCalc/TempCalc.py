@@ -5,7 +5,7 @@ LINE_LENGTH = 50
 print("Welcome to the Temperature Calculator")
 print('=' * LINE_LENGTH)
 
-<<<<<<< HEAD
+
 while True:
 
     while True:
@@ -14,5 +14,3 @@ while True:
             break
         else:
             print("Entry must be greater than 0. Please try again.")
-=======
->>>>>>> origin/master
