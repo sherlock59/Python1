@@ -1,68 +1,49 @@
 #!/usr/bin/env python3
+import f as f
+import to as to
 
 LINE_LENGTH = 50
-#display a welcome message
+# display a welcome message
 print("Welcome to the Temperature Calculator")
 print('=' * LINE_LENGTH)
 
-# 4 while loop
 while True:
 
     while True:
-      input - conversion c or f  # which direction
+        user_input = input(
+            'Enter F to convert C or enter C to convert to F: ')  # get the first letter and convert to lower case
+        conversion_type = user_input[0].lower()
+        if conversion_type == 'f':
+            f = c * 9 / 5 + 32
+        if conversion_type == 'c':
+            c = (f - 32) * 5 / 9
+        else:
+            print("Invalid letter entered! Please try again to convert the desired temperature...")
 
     while True:
-      input - start temp (-50, 150)  farhenheit
-      please enter the starting temp (-50, 150):)
-
-    while True:
-      input - stop temp 100
-
-    while True:
-      input - step intervel 10
-
-    for i in range (1,11)
-        f-string
-
-    f     c
-    ==== =====
-      0     -5
-      10     0
-      100    40
-
-        while True:
-            input - y/n ]
-
-
-while True:
-
-    while True:
-        monthly_investment = float(input("Enter monthly investment:\t"))
-        if 0 < monthly_investment <= 1000:
+        temp_start = int(input('{"Enter the starting temperature (-50 to 150)":.<45s}:'))
+        if -50 < temp_start <= 150:
             break
         else:
-            print("Entry must be greater than 0. Please try again.")
+            print("invalid... Please try again")
 
-    is_valid = True
-    while is_valid == True:
-        yearly_interest_rate = float(input("Enter yearly interest rate:\t"))
-        if yearly_interest_rate > 0 and yearly_interest_rate <= 15:
-            is_valid = False
+    while True:
+        temp_stop = int(input('{"Enter the stopping temperature (-50 to 150)":.<45s}:'))
+        if -50 < temp_stop <= 150:
+            break
         else:
-            print("Entry must be greater than 0 and less than or equal to 15. "
-                  "PLease try again.")
+            print("Invalid number... Please input a valid number")
 
-    is_valid = True
-    while is_valid == True:
-        years = int(input("Enter number of years:\t\t"))
-        if years > 0 and years <= 50:
-            is_valid = False
+    while True:
+        temp_step = int(input('{"Enter the step temperature (-50 to 150)":.<45s}:'))
+        if -50 < temp_step <= 150:
+            break
         else:
-            print("Entry must be greater than 0 and less than or equal to 50.\t"
-                  "Please try again.")
+            print("Please provide a valid number")
 
-    print()
-
-    # convert yearly values to monthly values
-    monthly_interest_rate = yearly_interest_rate / 12 /100
-    months = years * 12
+    for temp in range(temp_start, temp_stop, temp_step):
+        if conversion_type = 'f'
+        conversion_type = 'f' to 'c' using temp
+    else:
+        conversion_type = 'c' to 'f' using temp
+        print (f'{temp} {conversion_type}')
