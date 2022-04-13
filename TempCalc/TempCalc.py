@@ -2,12 +2,24 @@
 import f as f
 import to as to
 
+yes_No = "y"
+
+while yes_No() == "y":
+    print("Enter test scores")
+    print("Enter 'end' to end input")
+    print("======================")
+
 LINE_LENGTH = 50
 # display a welcome message
 print("Welcome to the Temperature Calculator")
 print('=' * LINE_LENGTH)
 
 while True:
+
+    temp_start = 0
+    temp_stop = 0
+    temp_step = 0
+    yes_No = "y"
 
     while True:
         user_input = input(
@@ -16,7 +28,7 @@ while True:
         if conversion_type == 'f':
             f = c * 9 / 5 + 32
         if conversion_type == 'c':
-            c = (f - 32) * 5 / 9
+            c = f - 32 * 5 / 9
         else:
             print("Invalid letter entered! Please try again to convert the desired temperature...")
 
@@ -42,8 +54,19 @@ while True:
             print("Please provide a valid number")
 
     for temp in range(temp_start, temp_stop, temp_step):
-        if conversion_type = 'f'
-        conversion_type = 'f' to 'c' using temp
+       if yes_No == 'f':
+       conversion_type = 'f' to 'c' using temp
     else:
-        conversion_type = 'c' to 'f' using temp
-        print (f'{temp} {conversion_type}')
+       conversion_type = 'c' to 'f' using temp
+       print (f'{temp} {conversion_type}')
+
+    print(f'| {temp:3.0f]} | {temp_conv:3.0f} |')
+
+    while True:
+        yes_No = input('Do you want to display another temperature chart (y/n)? ')
+        if yes_No() == "y":
+
+
+
+
+
