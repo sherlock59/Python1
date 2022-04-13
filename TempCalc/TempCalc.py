@@ -1,13 +1,4 @@
 #!/usr/bin/env python3
-import f as f
-import to as to
-
-yes_No = "y"
-
-while yes_No() == "y":
-    print("Enter test scores")
-    print("Enter 'end' to end input")
-    print("======================")
 
 LINE_LENGTH = 50
 # display a welcome message
@@ -16,19 +7,15 @@ print('=' * LINE_LENGTH)
 
 while True:
 
-    temp_start = 0
-    temp_stop = 0
-    temp_step = 0
-    yes_No = "y"
-
     while True:
-        user_input = input(
-            'Enter F to convert C or enter C to convert to F: ')  # get the first letter and convert to lower case
+        user_input = str(input("Enter F to convert C or enter C to convert to F: "))
         conversion_type = user_input[0].lower()
         if conversion_type == 'f':
             f = c * 9 / 5 + 32
-        if conversion_type == 'c':
+            break
+        elif conversion_type == 'c':
             c = f - 32 * 5 / 9
+            break
         else:
             print("Invalid letter entered! Please try again to convert the desired temperature...")
 
@@ -55,18 +42,23 @@ while True:
 
     for temp in range(temp_start, temp_stop, temp_step):
        if yes_No == 'f':
-       conversion_type = 'f' to 'c' using temp
-    else:
-       conversion_type = 'c' to 'f' using temp
-       print (f'{temp} {conversion_type}')
+        conversion_type = 'f' to 'c' using temp
+        elif:
+        conversion_type = 'c' to 'f' using temp
+        print (f'{temp} {conversion_type}')
+       else:
+        print 'break'
 
-    print(f'| {temp:3.0f]} | {temp_conv:3.0f} |')
+
+     #print(f'| {temp:3.0f]} | {temp_conv:3.0f} |')
 
     while True:
-        yes_No = input('Do you want to display another temperature chart (y/n)? ')
-        if yes_No() == "y":
-
-
-
-
-
+        user_input = str(input('Do you want to display another temperature chart (y/n)? '))
+        if conversion_type in ('y', 'n'):
+            break
+            print("invalid input.")
+            if user_input == 'y':
+                continue
+            else:
+                print("Have a nice day")
+                break
