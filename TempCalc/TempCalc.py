@@ -10,11 +10,7 @@ while True:
     while True:
         user_input = str(input("Enter F to convert C or enter C to convert to F: "))
         conversion_type = user_input[0].lower()
-        if conversion_type == 'f':
-            f = c * 9 / 5 + 32
-            break
-        elif conversion_type == 'c':
-            c = f - 32 * 5 / 9
+        if conversion_type in ['f','c']:
             break
         else:
             print("Invalid letter entered! Please try again to convert the desired temperature...")
@@ -40,14 +36,15 @@ while True:
         else:
             print("Please provide a valid number")
 
-    for temp in range(temp_start, temp_stop, temp_step):
-       if yes_No == 'f':
-        conversion_type = 'f' to 'c' using temp
-        elif:
-        conversion_type = 'c' to 'f' using temp
-        print (f'{temp} {conversion_type}')
-       else:
-        print 'break'
+    for temp in range(temp_start, temp_stop + 1, temp_step):
+       if conversion_type == 'f':
+            c = (temp - 32) * 5 / 9
+        #conversion_type = 'f' to 'c' using temp
+       elif user_input == 'c':
+            f = temp * 9 / 5 + 32
+        #conversion_type = 'c' to 'f' using temp
+       print(f'{temp} {conversion_type}')
+       
 
 
      #print(f'| {temp:3.0f]} | {temp_conv:3.0f} |')
