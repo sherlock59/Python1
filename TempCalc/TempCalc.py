@@ -46,10 +46,10 @@ while True:
             conversion_result = (temp - 32) * 5 / 9
         if conversion_type == 'c':
             conversion_result = temp * 9 / 5 + 32
-
         print(f'| {temp:3.0f} | {conversion_result:3.0f} |')
 
     while True:
+        print('=' * LINE_LENGTH)
         user_input = str(input('Do you want to display another temperature chart (y/n)? '))
         if user_input[0].lower() in ['y', 'n']:
             break
@@ -60,5 +60,5 @@ while True:
         break
     else:
         print()
-
+print('=' * LINE_LENGTH)
 print('Good bye')
