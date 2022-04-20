@@ -5,7 +5,6 @@
  * Date Written: 2022.01.31
  * GitHub: https://github.com/sherlock59/Python1.git ''')
 
-
 print("Welcome to the Salary Hours Calculator") # displays a welcome message
 print("This calculator allows the user to determine hours worked for a whole year")  # explain what does this program do
 print("")
@@ -21,7 +20,7 @@ sph = salary_amount * hours_worked_per_day
 sph = sph * 365
 
 # displays the result
-print 'Salary for per year:  ', sph
+print ('Salary for per year:  ', sph)
 print('')
 print("Bye!")
 

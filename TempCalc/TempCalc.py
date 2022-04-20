@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+(''' Description: This project calculates invoice total with discount included based on user's input'
+ * Written by: Anaberdi Meredov
+ * Date Written: 2022.01.31
+ * GitHub: https://github.com/sherlock59/Python1.git ''')
+
 LINE_LENGTH = 50
 # display a welcome message
 print("Welcome to the Temperature Calculator")
@@ -46,12 +51,12 @@ while True:
 
     while True:
         user_input = str(input('Do you want to display another temperature chart (y/n)? '))
-        if yes_no[0].lower() in ('y', 'n'):
+        if user_input[0].lower() in ('y', 'n'):
             break
         else:
             print("Invalid Input")
 
-    if yes_no[0].lower() == 'n':
+    if user_input[0].lower() == 'n':
         break
     else:
         print()
