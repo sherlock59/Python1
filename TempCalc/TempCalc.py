@@ -9,9 +9,9 @@ LINE_LENGTH = 50
 # display a welcome message
 print("Welcome to the Temperature Calculator")
 print('=' * LINE_LENGTH)
-
+# global while loop
 while True:
-
+    # this while loop validates if the user enters c or f and converts to small letter if typed with capital letters
     while True:
         user_input = str(input("Enter F to convert C or enter C to convert to F: "))
         conversion_type = user_input[0].lower()
@@ -19,7 +19,7 @@ while True:
             break
         else:
             print("Invalid letter entered! Please try again to convert the desired temperature...")
-
+#  Three while loops below examines if user typed legitimate numbers for calculation
     while True:
         temp_start = int(input(f'{"Enter the starting temperature (-50 to 150)":.<45s}:'))
         if -50 <= temp_start <= 150:
@@ -40,14 +40,14 @@ while True:
             break
         else:
             print("Please provide a valid number")
-
+    # for loop does conversion and presents them in an organized manner
     for temp in range(temp_start, temp_stop + 1, temp_step):
         if conversion_type == 'f':
             conversion_result = (temp - 32) * 5 / 9
         if conversion_type == 'c':
             conversion_result = temp * 9 / 5 + 32
         print(f'| {temp:3.0f} | {conversion_result:3.0f} |')
-
+    # this while loop validates if the user wants to convert another temperature
     while True:
         print('=' * LINE_LENGTH)
         user_input = str(input('Do you want to display another temperature chart (y/n)? '))
