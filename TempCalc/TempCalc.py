@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-(''' Description: This project calculates invoice total with discount included based on user's input'
+(''' Description: This project works as calculator and allows users to convert temperature from C to F and F to C'
  * Written by: Anaberdi Meredov
- * Date Written: 2022.01.31
+ * Date Written: 2022.04.20
  * GitHub: https://github.com/sherlock59/Python1.git ''')
 
 LINE_LENGTH = 50
@@ -44,14 +44,14 @@ while True:
     for temp in range(temp_start, temp_stop + 1, temp_step):
         if conversion_type == 'f':
             conversion_result = (temp - 32) * 5 / 9
-        elif conversion_type == 'c':
+        if conversion_type == 'c':
             conversion_result = temp * 9 / 5 + 32
 
-        print(f'| {temp:3.0f]} | {conversion_type:3.0f} |')
+        print(f'| {temp:3.0f} | {conversion_result:3.0f} |')
 
     while True:
         user_input = str(input('Do you want to display another temperature chart (y/n)? '))
-        if user_input[0].lower() in ('y', 'n'):
+        if user_input[0].lower() in ['y', 'n']:
             break
         else:
             print("Invalid Input")
