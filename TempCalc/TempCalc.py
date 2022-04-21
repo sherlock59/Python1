@@ -4,7 +4,7 @@
  * Written by: Anaberdi Meredov
  * Date Written: 2022.04.20
  * GitHub: https://github.com/sherlock59/Python1.git ''')
-
+a
 LINE_LENGTH = 50
 # display a welcome message
 print("Welcome to the Temperature Calculator")
