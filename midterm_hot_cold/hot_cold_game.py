@@ -98,7 +98,16 @@ else:
 previous_x = x
 previous_Y = y
 
-# getting user's input
+# getting user's input for the size of hte circle and the size of the movement
+# if the user closes the input wihout entering a valid value
+# then set the default sizes both to 50
+try:
+    circle_size = int(turtle.numinput('Circle', 'Size of circles (10 - 100)', minval=19, maxval=100))
+    move_size = int(turtle.numinput('Circle', 'Size of move (10-100)', minval=10, maxval=100))
+except:
+    circle_size = 50
+    move_size = 50
+
 
 
 
