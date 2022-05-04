@@ -7,9 +7,9 @@ Objects & methods that all shapes uses to share one global turtle and window scr
 __author__ = 'Annaberdi Meredov'
 __version__ = '1.0'
 __copyright__ = "Copyright 2022.05.4, Chapter 4 Assignment"
-__github__ = ""
+__github__ = "https://github.com/sherlock59/Python1.git"
 
-rusalka = None  # the global window screen that all shapes will share
+wt = None  # the global window screen that all shapes will share
 zvezda = None   # the global turtle that all shapes will share
 
 
@@ -21,13 +21,13 @@ def turtle_setup():
     Returns:
         None
     """
-    global rusalka, zvezda
-    rusalka = turtle.Screen()  # used to control the window
+    global wt, zvezda
+    wt = turtle.Screen()  # used to control the window
     zvezda = turtle.Turtle()  # basically this is your cursor that you used to draw with
 
     # make sure the turtle window screen displays on top of other open windows
-    root_window = rusalka.getcanvas().winfo_toplevel()  # get the top level turtle screen canvas
-    root_window.call('rusalka', 'attributes', '.', '-topmost', '1')  # and make it have the top focus
+    root_window = wt.getcanvas().winfo_toplevel()  # get the top level turtle screen canvas
+    root_window.call('wt', 'attributes', '.', '-topmost', '1')  # and make it have the top focus
 
 
 def screen_recreation():
@@ -41,4 +41,4 @@ def screen_recreation():
 
     turtle.Turtle._screen = None  # force recreation of singleton Screen object
     turtle.TurtleScreen._RUNNING = True  # only set upon TurtleScreen() definition
-
+    turtle.done()
