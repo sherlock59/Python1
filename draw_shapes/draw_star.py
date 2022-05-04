@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
+import turtle
 
 import global_turtle
+zvezda = turtle.Turtle
 
 """
 This module contains functions related to drawing a star using turtle
@@ -73,6 +75,10 @@ def main():
 
     setup_window('lightblue')  # configure how the turtle window screen will look like
     draw_star(100, 'pink', 'black')  # draw the turtle square (length, outline, fill)
+
+    global_turtle.zvezda.penup()
+    global_turtle.zvezda.forward(120)
+    global_turtle.zvezda.pendown()
 
     global_turtle.wt.mainloop()  # keep the turtle running until the user closes it
 
