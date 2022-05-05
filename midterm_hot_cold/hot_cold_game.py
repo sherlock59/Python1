@@ -8,15 +8,16 @@ __copyright__ = "Copyright 2022.05.4, Chapter 4 Assignment"
 __github__ = "https://github.com/sherlock59/Python1.git"
 
 
-def turtle_setup():
-    """
-All shape need to share the same window screen & turtle objects
-Also, sets the newly open window screen on top of other windows
+# Screen setup
+ekran = turtle.Screen()
+ekran.colormode(255)
+ekran.title("Hot & Cold")  # title bar of the window
+ekran.bgcolor("black")  # set the window's background color
+ekran.setup(1000, 1000)  # set the window's size
+ekran.tracer(False)  # turn animation off which causes screen flickering as the circle gets redrawn
 
- Returns:
-   None
- """
-
+# setting up the locator
+strelka = turtle.Turtle()
 circle_size = 100   # set the difficulty of the game by the size of the circles
 move_size = 100     # set the difficulty of the game by the size of the circles
 num_moves = 0       # running total of the number of moves to find hidden circle
@@ -24,34 +25,23 @@ x = 0               # center of screen moving right or left
 y = 0               # center of screen moving up or down
 fill_color = 'red'  # the color of the circle
 
-## Screen setup
-wn = turtle.Screen()
-wn.title("Hot & Cold")  # title bar of the window
-wn.bgcolor("white")  # set the window's background color
-wn.setup(width=1000, height=1000)  # set the window's size
-wn.tracer(False)  # turn animation off which causes screen flickering as the circle gets redrawn
-
-
 # previous location of the user's circle used to determine if the user is getting closer or further away
 previous_x = 0
 previous_y = 0
-
-# current location of the user's circle
-x = 0  # from the center of screen and used to move right (+) or left (-)
-y = 0  # start at the center and used to move up (+) or down (-)
 
 # used to control the hidden circle location
 hidden_x = 0  # from the center of the screen right (+) left (-)
 hidden_y = 0  # from the center of the screen up (+) down (-)
 
-user_color = 'blue' 'red'  # the color of the user;s circle (closer) cold = blue , (further) hot=red
-hidden_color = 'black'  # the default for the hideden is black to match the screen background color
+
+user_color = 'blue' and 'red'  # the color of the user;s circle (closer) cold = blue , (further) hot=red
+hidden_color = 'black'  # the default for the hidden is black to match the screen background color
 
 while True:
     hidden_x = random.randint(-420, 420)  # left and right position mix
     hidden_y = random.randint(-300, 300)  # bottom and top position max
 
-    # max sure the hidden circle isn't too close to teh users circle
+    # making sure that the hidden circle isn't too close to the users circle
     # can't be within twice the user's circle size +10
     if abs(hidden_x) > (circle_size * 2 + 10) and abs(hidden_y) > (circle_size * 2 +10):
         break
@@ -75,7 +65,7 @@ if abs(x - hidden_x) < overlap and abs(y - hidden_y) < overlap:
     hidden_color = 'green yellow'
     user_color = 'green'
 else:
-    # if the user;s circle x location has changed then determine if they are closer or further away from previous x
+    # if the user's circle x location has changed then determine if they are closer or further away from previous x
     if previous_x != x:
         # if previous x distance is less than current x distance then set red otherwise blue
         if abs(previous_x  - hidden_x) > abs(x - hidden_x):
@@ -86,7 +76,7 @@ else:
     # if the user's circle y location has changed then determine if they are closer or further away from previous y
     if previous_y != y:
         # if previous y distance is less than current y distance then set red otherwise blue
-        if abs(previous_y) > abs(y - hidden_y):
+        if abs(previous_y - hidden_y) > abs(y - hidden_y):
             user_color = 'red'
         else:
             user_color = 'blue'
@@ -95,8 +85,8 @@ else:
 previous_x = x
 previous_Y = y
 
-# getting user's input for the size of hte circle and the size of the movement
-# if the user closes the input wihout entering a valid value
+# getting user's input for the size of tte circle and the size of the movement
+# if the user closes the input without entering a valid value
 # then set the default sizes both to 50
 try:
     circle_size = int(turtle.numinput('Circle', 'Size of circles (10 - 100)', minval=10, maxval=100))
@@ -105,51 +95,43 @@ except:
     circle_size = 50
     move_size = 50
 
-
-def debug():
-    if wn.bgcolor() == hidden_color:
-        hidden_color == 'gray'
-    else:
-        hidden_color == 'black'
+#    debug()
 
 
-def display_game():
-    wn.clear()   # or turtle.clear()
+if ekran.bgcolor() == hidden_color:
+    hidden_color == 'gray'
+else:
+    hidden_color == 'black'
+
+ekran.clear()  # clears the screen itself
+strelka.clear()  # clears the drawings, plus restore method also could be used
+
+# write text on the screen
+
+strelka.penup()  # don't want to see icon moving on the screen
+strelka.goto(-480, 340)  # from the current position which is center after clear, move left 350 up 350
+strelka.pencolor('pink')  # text color
+strelka.write("Welcome to the Hot & Cold game \n"
+              "Find a hidden color by moving controlling arrows\n"
+              "The closer you get, the red color appear and likewise with blue", font=("Verdana", 13, "bold"))
 
 
-def draw_circle():
-    global x, y, fill_color
-    global hidden_color, fill_color  # hide
-
-    wn.hideturtle()       # don't show the icon
-    wn.speed('fastest')   # draw quickly
-
-
-#def draw_hidden_circle():
- #   global hidden_x, hidden_y
+# draw circle
+strelka.goto(x, y)
+strelka.pendown()
+strelka.fillcolor(fill_color)
+strelka.begin_fill()
+strelka.circle(50)
+strelka.end.fill()
 
 
 def up():
-     wn.setheading(90)
-     wn.forward(100)
-
-def down():
-    wn.setheading(270)
-    wn.forward(100)
-
-def left():
-    wn.setheading(180)
-    wn.forward(100)
-
-def right():
-    wn.setheading(0)
-    wn.forward(100)
-
-turtle.listen()
-
-turtle.onkey(up, 'up')
-turtle.onkey(down, 'Down')
-turtle.onkey(left, 'Left')
-turtle.onkey(right, 'Right')
+    strelka
 
 turtle.mainloop()
+
+
+ekran.clear()    # clears the screen itself
+strelka.clear()  # clears the drawings, plus restore method also could be used
+
+
