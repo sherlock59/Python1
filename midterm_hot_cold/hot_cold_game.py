@@ -106,29 +106,47 @@ else:
 ekran.clear()  # clears the screen itself
 strelka.clear()  # clears the drawings, plus restore method also could be used
 
+
+
+
 # write text on the screen
 
 strelka.penup()  # don't want to see icon moving on the screen
 strelka.goto(-480, 340)  # from the current position which is center after clear, move left 350 up 350
-strelka.pencolor('pink')  # text color
-strelka.write("Welcome to the Hot & Cold game \n"
-              "Find a hidden color by moving controlling arrows\n"
-              "The closer you get, the red color appear and likewise with blue", font=("Verdana", 13, "bold"))
+strelka.pencolor('blue')  # text color
+strelka.write("Welcome to the Hot & Cold game \n\n"
+              "Find a hidden color by moving controlling arrows\n\n"
+              "The closer you get, the red color appear and likewise with blue\n"
+              "Please pick the level of hardness you would like to play", font=("Verdana", 13, "bold"))
+
+
+# getting user's input for the size of tte circle and the size of the movement
+# if the user closes the input without entering a valid value
+# then set the default sizes both to 50
+try:
+    circle_size = int(turtle.numinput('Circle', 'Size of circles (10 - 100)', minval=10, maxval=100))
+    move_size = int(turtle.numinput('Circle', 'Size of move (10-100)', minval=10, maxval=100))
+except:
+    circle_size = 50
+    move_size = 50
+
 
 
 # draw circle
 strelka.goto(x, y)
 strelka.pendown()
-strelka.fillcolor(fill_color)
+strelka.fillcolor(user_color)
+strelka.fillcolor(hidden_color)
 strelka.begin_fill()
 strelka.circle(50)
 strelka.end.fill()
 
 
-def up():
-    strelka
 
-turtle.mainloop()
+
+strelka.goto(150, 360)
+strelka.pencolor('red')
+strelka.write("Your current move is: " 'previous_x, previous_y', font=("Verdana", 13, "bold"))
 
 
 ekran.clear()    # clears the screen itself
