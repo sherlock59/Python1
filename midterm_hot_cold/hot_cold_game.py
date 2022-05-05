@@ -26,9 +26,11 @@ fill_color = 'red'  # the color of the circle
 
 ## Screen setup
 wn = turtle.Screen()
-wn.title("Hot & Cold")
-wn.bgcolor("white")
-wn.setup(width=600, height=600)
+wn.title("Hot & Cold")  # title bar of the window
+wn.bgcolor("white")  # set the window's background color
+wn.setup(width=1000, height=1000)  # set the window's size
+wn.tracer(False)  # turn animation off which causes screen flickering as the circle gets redrawn
+
 
 # previous location of the user's circle used to determine if the user is getting closer or further away
 previous_x = 0
@@ -39,14 +41,11 @@ x = 0  # from the center of screen and used to move right (+) or left (-)
 y = 0  # start at the center and used to move up (+) or down (-)
 
 # used to control the hidden circle location
-hidden_x = 0 # from the center of the screen right (+) left (-)
-hideen_y = 0  # from the center of the screen up (+) down (-)
+hidden_x = 0  # from the center of the screen right (+) left (-)
+hidden_y = 0  # from the center of the screen up (+) down (-)
 
 user_color = 'blue' 'red'  # the color of the user;s circle (closer) cold = blue , (further) hot=red
 hidden_color = 'black'  # the default for the hideden is black to match the screen background color
-
-
-global hidden_x, hidden_y
 
 while True:
     hidden_x = random.randint(-420, 420)  # left and right position mix
@@ -58,17 +57,15 @@ while True:
         break
 
 # set the center location
-global x, y
 
 # user's circle will be placed in the middle of the screen based on the circle size
 # divide the circle size in half and then move to down (-y) and to the left (-x) by multiplying by -1
-center_pos = int (circle_size / 2) * -1
+center_pos = int(circle_size / 2) * -1
 
 x = center_pos  # user's circle will be in the center of the screen moving right or left
 y = center_pos  # user's circle will be placed in the screen moving up or down
 
 # changing the circle color
-global previous_x, previous_y, user_color, hdiden_color
 
 # set the amount the user's circle must overlap by the dimension of both circles together minus 10
 overlap = circle_size * 2 - 10
@@ -102,12 +99,57 @@ previous_Y = y
 # if the user closes the input wihout entering a valid value
 # then set the default sizes both to 50
 try:
-    circle_size = int(turtle.numinput('Circle', 'Size of circles (10 - 100)', minval=19, maxval=100))
+    circle_size = int(turtle.numinput('Circle', 'Size of circles (10 - 100)', minval=10, maxval=100))
     move_size = int(turtle.numinput('Circle', 'Size of move (10-100)', minval=10, maxval=100))
 except:
     circle_size = 50
     move_size = 50
 
 
+def debug():
+    if wn.bgcolor() == hidden_color:
+        hidden_color == 'gray'
+    else:
+        hidden_color == 'black'
 
 
+def display_game():
+    wn.clear()   # or turtle.clear()
+
+
+def draw_circle():
+    global x, y, fill_color
+    global hidden_color, fill_color  # hide
+
+    wn.hideturtle()       # don't show the icon
+    wn.speed('fastest')   # draw quickly
+
+
+#def draw_hidden_circle():
+ #   global hidden_x, hidden_y
+
+
+def up():
+     wn.setheading(90)
+     wn.forward(100)
+
+def down():
+    wn.setheading(270)
+    wn.forward(100)
+
+def left():
+    wn.setheading(180)
+    wn.forward(100)
+
+def right():
+    wn.setheading(0)
+    wn.forward(100)
+
+turtle.listen()
+
+turtle.onkey(up, 'up')
+turtle.onkey(down, 'Down')
+turtle.onkey(left, 'Left')
+turtle.onkey(right, 'Right')
+
+turtle.mainloop()
