@@ -12,9 +12,9 @@ __github__ = "https://github.com/sherlock59/Python1.git"
 ekran = turtle.Screen()
 ekran.colormode(255)
 ekran.title("Hot & Cold")  # title bar of the window
-ekran.bgcolor("black")  # set the window's background color
-ekran.setup(1000, 1000)  # set the window's size
-ekran.tracer(False)  # turn animation off which causes screen flickering as the circle gets redrawn
+ekran.bgcolor("black")     # set the window's background color
+ekran.setup(700, 700)      # set the window's size
+ekran.tracer(False)        # turn animation off which causes screen flickering as the circle gets redrawn
 
 # setting up the locator
 strelka = turtle.Turtle()
@@ -33,6 +33,29 @@ previous_y = 0
 hidden_x = 0  # from the center of the screen right (+) left (-)
 hidden_y = 0  # from the center of the screen up (+) down (-)
 
+# Display the game instructions
+strelka.penup()  # don't want to see icon moving on the screen
+strelka.goto(-340, 200)  # from the current position which is center after clear, move left 350 up 350
+strelka.pencolor('blue')  # text color
+strelka.write("Welcome to the Hot & Cold game \n\n"
+              "Instructions:\n\nFind a hidden circle by controlling arrows.\n"
+              "The circle that you see, will turn to red(closer) or blue(father) \n"
+              "To start a game, please proceed the request below", font=("Verdana", 15, "bold"))
+strelka.pendown()
+
+
+# getting user's input for the size of tte circle and the size of the movement
+# if the user closes the input without entering a valid value
+# then set the default sizes both to 50
+
+try:
+    circle_size = int(turtle.numinput('Circle', 'Size of circles (10 - 100)', minval=10, maxval=100))
+    move_size = int(turtle.numinput('Circle', 'Size of move (10-100)', minval=10, maxval=100))
+except:
+    circle_size = 50
+    move_size = 50
+
+ekran.tracer(True)
 
 user_color = 'blue' and 'red'  # the color of the user;s circle (closer) cold = blue , (further) hot=red
 hidden_color = 'black'  # the default for the hidden is black to match the screen background color
@@ -43,7 +66,7 @@ while True:
 
     # making sure that the hidden circle isn't too close to the users circle
     # can't be within twice the user's circle size +10
-    if abs(hidden_x) > (circle_size * 2 + 10) and abs(hidden_y) > (circle_size * 2 +10):
+    if abs(hidden_x) > (circle_size * 2 + 10) and abs(hidden_y) > (circle_size * 2 + 10):
         break
 
 # set the center location
@@ -55,7 +78,6 @@ center_pos = int(circle_size / 2) * -1
 x = center_pos  # user's circle will be in the center of the screen moving right or left
 y = center_pos  # user's circle will be placed in the screen moving up or down
 
-# changing the circle color
 
 # set the amount the user's circle must overlap by the dimension of both circles together minus 10
 overlap = circle_size * 2 - 10
@@ -68,7 +90,7 @@ else:
     # if the user's circle x location has changed then determine if they are closer or further away from previous x
     if previous_x != x:
         # if previous x distance is less than current x distance then set red otherwise blue
-        if abs(previous_x  - hidden_x) > abs(x - hidden_x):
+        if abs(previous_x - hidden_x) > abs(x - hidden_x):
             user_color = 'red'
         else:
             user_color = 'blue'
@@ -95,61 +117,37 @@ except:
     circle_size = 50
     move_size = 50
 
-#    debug()
+#  Toggles debug mode making it easier to test the game.
+#  If the hidden circle color is black (same as the background) change it to gray
+#  otherwise change it back to black.
+#  The redisplay the game based on current settings.
 
-
-if ekran.bgcolor() == hidden_color:
-    hidden_color == 'gray'
+if hidden_color == ekran.bgcolor():
+    hidden_color = 'gray'
 else:
-    hidden_color == 'black'
+    hidden_color = 'black'
 
-ekran.clear()  # clears the screen itself
-strelka.clear()  # clears the drawings, plus restore method also could be used
-
-
+# Clearing all turtle drawings
+strelka.clear()  # clears the drawings (restore method also could be used)
 
 
-# write text on the screen
 
-strelka.penup()  # don't want to see icon moving on the screen
-strelka.goto(-480, 340)  # from the current position which is center after clear, move left 350 up 350
-strelka.pencolor('blue')  # text color
-strelka.write("Welcome to the Hot & Cold game \n\n"
-              "Find a hidden color by moving controlling arrows\n\n"
-              "The closer you get, the red color appear and likewise with blue\n"
-              "Please pick the level of hardness you would like to play", font=("Verdana", 13, "bold"))
+#   Draw the user's circle and the hidden circle
 
-
-# getting user's input for the size of tte circle and the size of the movement
-# if the user closes the input without entering a valid value
-# then set the default sizes both to 50
-try:
-    circle_size = int(turtle.numinput('Circle', 'Size of circles (10 - 100)', minval=10, maxval=100))
-    move_size = int(turtle.numinput('Circle', 'Size of move (10-100)', minval=10, maxval=100))
-except:
-    circle_size = 50
-    move_size = 50
-
-
+# draw hidden circle
+strelka.goto(hidden_x, hidden_y)  # move to the updated x (left-right) and y (up-down) location from center
+strelka.fillcolor(hidden_color)  # fill color of the circle
+strelka.begin_fill()  # start the fill of whatever is being drawn
+strelka.circle(circle_size)  # diameter of the circle
+strelka.end_fill()  # done drawing the object to complete the fill
 
 # draw circle
 strelka.goto(x, y)
-strelka.pendown()
 strelka.fillcolor(user_color)
-strelka.fillcolor(hidden_color)
 strelka.begin_fill()
-strelka.circle(50)
-strelka.end.fill()
+strelka.circle(circle_size)
+strelka.end_fill()
 
+# Display the hidden circle based on the circle size, hidden location (x,y) and hidden color
 
-
-
-strelka.goto(150, 360)
-strelka.pencolor('red')
-strelka.write("Your current move is: " 'previous_x, previous_y', font=("Verdana", 13, "bold"))
-
-
-ekran.clear()    # clears the screen itself
-strelka.clear()  # clears the drawings, plus restore method also could be used
-
-
+strelka.mainloop()
