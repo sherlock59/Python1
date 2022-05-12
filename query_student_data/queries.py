@@ -96,19 +96,6 @@ def each_class_genders():
     #   a dict with female and male counts (see above example)
 
     # for loop for displaying the dictionary
-   # for key(
-
-  #      class ), value (genders dict) in
-
-
-#class gender 2D dict items
-
-
-#display
-#the
-#course, and genders
-#dict
-
 
 ###########################################################################################
 # Sue Smith Class LIst
@@ -271,4 +258,4 @@ def students_with_low_grades():
 
     # convert to list and sort
 
-    list_students(low_grades_list)
+    #list_students(low_grades_list)
