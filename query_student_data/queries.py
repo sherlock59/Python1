@@ -6,58 +6,100 @@ import student_data as data
 ###########################################################################################
 def list_students(student_ids):
     for student_id in student_ids:
-        print(student_id, data.students[student_id]['firstName'],
-              data.students[student_id]['lastName'])
+        print(student_id,
+              data.students.get(student_id).get('firstName'),
+              data.students.get(student_id).get('lastName')
+              )
 
 
-###########################################################################################
-# Display the student information
-# Example of report
-# -----------------------------------
-# ID: 31 Bob Smith
-#	Groups: basketball, track, student council
-#	English [80, 100]
-#	Science [100, 80]
-###########################################################################################
 def student_information():
+    """
+    Report example...
+    ================================================================================
+    Student Information
+    ================================================================================
+    ID: 31 Bob Smith
+       Groups: track, basketball, student council,
+       English [80, 100]
+       Science [100, 80]
+
+    :return:
+    """
     print('=' * 80)
     print("Student Information")
     print('=' * 80)
 
+    # for key (student id), value (student info dict) in 2D data.students dict items
+    for student_id, student_info in data.students.items():
+        # 	display student id (key) and name (value)
+        print('ID: ', student_id, student_info.get('firstName'), student_info.get('lastName'))
 
-# for loop for displaying the data
-# for key (student id), value (student info dict) in 2D data.students dict items
-# 	display student id (key) and name (value)
-#
-# 	for each group in student’s groups set
-# 		display the student’s group set using a print with end=’, ‘
-#
-# 	for key (class), value (class grades dict) in 2D grades dict items
-# 		if student id (outer key) in class grades dict
-#			display class (key), and student’s grade list (value)
+        print('\tGroups: ', end='')
+        # 	for each group in student’s groups set
+        for group in student_info.get('groups'):
+            # display the student’s group set using a print with end=’, '
+            print(group, end=', ')
+        # print(*student_info.get('groups'), sep=',') ### unpacks all the groups,
+        # and display them comma separated
+
+        print()
+
+        #  for key (class), value (class subject dict) in 2D subject dict items
+        for subject, grades in data.grades.items():
+            # if student id (outer key) in class grades dict
+            if student_id in grades:
+                # display class (key), and student’s grade list (value)
+                print('\t' + subject, grades.get(student_id))
+
+        print()
 
 
-###########################################################################################
-# All Sports List
-###########################################################################################
 def all_sports_list():
+    """
+    Report Example...
+    ================================================================================
+    All Sports
+    ================================================================================
+    baseball
+    basketball
+    cross country
+    football
+    softball
+    track
+    volleyball
+    wrestling
+
+    :return:
+    """
     print('=' * 80)
     print("All Sports")
     print('=' * 80)
 
     sports = list()
 
+    # for key (season), value (season sports set) in 2D data.sports dict items
+    print(*list(sports))
 
-# building the sports list
-# --------------------------------------------------------------------------------------
-# for key (season), value (season sports set) in 2D data.sports dict items
-# 	append the current season’s sports set (value) to sports list by...
-# 	converting the set to a list and using the extend function to append it...
-# 	nested the list function inside the extend function to do this with one statement
+
+# print(*student_info.get('groups'), sep=',') ### unpacks all the groups,
+# and display them comma separated
+
+
+        #  append the current season’s sports set (value) to sports list by...
+        #  converting the set to a list and using the extend function to append it...
+        #  nested the list function inside the extend function to do this with one statement
 
 # sort list
 
 # for loop for displaying the list
+
+
+
+
+
+
+
+
 
 
 ###########################################################################################
