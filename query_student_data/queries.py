@@ -37,9 +37,9 @@ def student_information():
         print('\tGroups: ', end='')
         # 	for each group in student’s groups set
         for group in student_info.get('groups'):
-            # display the student’s group set using a print with end=’, '
+          # display the student’s group set using a print with end=’, '
             print(group, end=', ')
-        # print(*student_info.get('groups'), sep=',') ### unpacks all the groups,
+       # print(*student_info.get('groups'), sep=',') ### unpacks all the groups,
         # and display them comma separated
 
         print()
@@ -77,11 +77,17 @@ def all_sports_list():
 
     sports = list()
 
+    all_sports = []
+    for season, sport_set in data.sports.items():
+        season.appeand()
+
+
+
+
     # for key (season), value (season sports set) in 2D data.sports dict items
-    print(*list(sports))
 
 
-# print(*student_info.get('groups'), sep=',') ### unpacks all the groups,
+
 # and display them comma separated
 
 
