@@ -36,8 +36,9 @@ def update(student_list):
     user_confirm = v.get_yes_no(f'Do you want to update student ID # {id} {fname} {lname}')
 
     if user_confirm:
-        new_fname = input('Please enter the student\s first name or press enter to keep ' +
+       new_fname = input('Please enter the student\s first name or press enter to keep ' +
                           student_list[id - 1][1] + ': '.title())
+        return
 
 
 def delete(student_list):
@@ -72,8 +73,8 @@ def main():
             list(student_list)
         elif command.lower() == "2":
             add(student_list)
-#        elif command.lower() == "3":
-   #         update(student_list)
+        elif command.lower() == "3":
+            update(student_list)
         elif command.lower() == "4":
             delete(student_list)
         elif command.lower() == "0":
