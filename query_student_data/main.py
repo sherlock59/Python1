@@ -5,9 +5,9 @@ This module contains the functions for displaying the main menu and running the 
 
 import queries
 
-__author__ = "Debbie Johnson"
-__version__ = "1.0"
-_date__ = "2020.11.05"
+__author__ = "Anaberdi Meredov"
+__version__ = "2.0"
+_date__ = "2022.16.05"
 
 
 def display_menu():
