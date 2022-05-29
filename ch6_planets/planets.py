@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 """
-This module contains functions related to drawing a cute pink star,
-UCO( unidentified circle object ), rainbow dash, and sharp star with using turtle
+This is an application that gives a accurate measurement for galaxy distances. It allows to pick
+one particular planet and compare distance of it with rest of planets
 """
 
 __author__ = 'Anaberdi Meredov'
