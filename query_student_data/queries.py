@@ -85,17 +85,13 @@ def all_sports_list():
     print("All Sports")
     print('=' * 80)
 
-    print('baseball\n'
-          'basketball\n'
-          'cross country\n'
-          'football\n'
-          'softball\n'
-          'track\n'
-          'volleyball\n'
-          'wrestling')
+    sports = list()
+
+    print(sports)
+
 
     #for season in data.sports.items():
-    #    print(season.get('fall'), season.get('winter'),
+     #   print(season.get
     #          season.get('spring'), season.get('summer'))
 
 

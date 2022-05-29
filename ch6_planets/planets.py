@@ -11,82 +11,10 @@ __copyright__ = "Copyright 2022.05.12, Chapter 4 Assignment"
 __github__ = "https://github.com/sherlock59/Python1.git"
 
 
-def earth():
-     print("Earth is 25 million miles from Venus\n"
-                    "Mercury is 37 million miles from Venus\n"
-                    "Mars is 61 million miles from Venus\n"
-                    "Jupiter is 394 million miles from Venus\n"
-                    "Saturn is 773 million miles from Venus\n"
-                    "Uranus is 1644 million miles from Venus\n"
-                    "Neptune is 2704 million miles from Venus\n")
-
-
-def jupiter():
-    print("Earth is 25 million miles from Venus\n"
-                         "Mercury is 37 million miles from Venus\n"
-                         "Mars is 61 million miles from Venus\n"
-                         "Jupiter is 394 million miles from Venus\n"
-                         "Saturn is 773 million miles from Venus\n"
-                         "Uranus is 1644 million miles from Venus\n"
-                         "Neptune is 2704 million miles from Venus\n")
-
-
-def mars():
-   print("Earth is 25 million miles from Venus\n"
-                         "Mercury is 37 million miles from Venus\n"
-                         "Mars is 61 million miles from Venus\n"
-                         "Jupiter is 394 million miles from Venus\n"
-                         "Saturn is 773 million miles from Venus\n"
-                         "Uranus is 1644 million miles from Venus\n"
-                         "Neptune is 2704 million miles from Venus\n")
-
-
-def mercury():
-  print("Earth is 25 million miles from Venus\n"
-                         "Mercury is 37 million miles from Venus\n"
-                         "Mars is 61 million miles from Venus\n"
-                         "Jupiter is 394 million miles from Venus\n"
-                         "Saturn is 773 million miles from Venus\n"
-                         "Uranus is 1644 million miles from Venus\n"
-                         "Neptune is 2704 million miles from Venus\n")
-
-def neptune():
-    print.command.lower("Earth is 25 million miles from Venus\n"
-                         "Mercury is 37 million miles from Venus\n"
-                         "Mars is 61 million miles from Venus\n"
-                         "Jupiter is 394 million miles from Venus\n"
-                         "Saturn is 773 million miles from Venus\n"
-                         "Uranus is 1644 million miles from Venus\n"
-                         "Neptune is 2704 million miles from Venus\n")
-
-
-def saturn():
-     print("Earth is 25 million miles from Venus\n"
-                         "Mercury is 37 million miles from Venus\n"
-                         "Mars is 61 million miles from Venus\n"
-                         "Jupiter is 394 million miles from Venus\n"
-                         "Saturn is 773 million miles from Venus\n"
-                         "Uranus is 1644 million miles from Venus\n"
-                         "Neptune is 2704 million miles from Venus\n")
-
-
-def uranus():
-    print("Earth is 25 million miles from Venus\n"
-                         "Mercury is 37 million miles from Venus\n"
-                         "Mars is 61 million miles from Venus\n"
-                         "Jupiter is 394 million miles from Venus\n"
-                         "Saturn is 773 million miles from Venus\n"
-                         "Uranus is 1644 million miles from Venus\n"
-                         "Neptune is 2704 million miles from Venus\n")
-
-def venus():
-    print("Earth is 25 million miles from Venus\n"
-                         "Mercury is 37 million miles from Venus\n"
-                         "Mars is 61 million miles from Venus\n"
-                         "Jupiter is 394 million miles from Venus\n"
-                         "Saturn is 773 million miles from Venus\n"
-                         "Uranus is 1644 million miles from Venus\n"
-                         "Neptune is 2704 million miles from Venus\n")
+# Defined a 2d tuple planets and their closest distance from the sun in millions of a mile
+planets = (('Mercury', 29), ('Venus', 60), ('Earth', 91), ('Mars', 127),
+           ('Jupiter', 460), ('Saturn', 839), ('Uranus', 1710), ('Neptune', 2770),
+           ('Pluto', 2760))
 
 
 def display_planets():
@@ -94,32 +22,37 @@ def display_planets():
 
 
 def main():
+    planet_list = []
+
     display_planets()
 
     while True:
         command = input("Please enter one of the above planet names or q to quit: ")
         if command.lower() == "Earth":
-            earth()
-        elif command.lower() == "Jupiter":
-            jupiter()
-        elif command.lower() == "Mars":
-            mars()
-        elif command.lower() == "Mercury":
-            mercury()
-        elif command.lower() == "Neptune":
-            neptune()
-        elif command.lower() == "Saturn":
-            saturn()
-        elif command.lower() == "Uranus":
-            uranus()
-        elif command.lower() == "Venus":
-            venus()
+            earth(planet_list)
             break
+        elif command.lower() == "Jupiter":
+            break
+            jupiter(planet_list)
+        elif command.lower() == "Mars":
+            mars(planet_list)
+            break
+        elif command.lower() == "Mercury":
+            mercury(planet_list)
+        elif command.lower() == "Neptune":
+            neptune(planet_list)
+            break
+        elif command.lower() == "Saturn":
+            saturn(planet_list)
+        elif command.lower() == "Uranus":
+            uranus(planet_list)
+        elif command.lower() == "Venus":
+            venus(planet_list)
         else:
             print("Not a valid command. Please try again.\n")
         if command.lower() == "quit" or "q":
             print("Live long and prosper!")
-        break
+            break
 
 
 if __name__ == "__main__":
