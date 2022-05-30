@@ -96,22 +96,7 @@ def all_sports_list():
 
 ###########################################################################################
 # Each Class Genders
-#
-# Example of class_gender dict:
-# -----------------------------------
-# 'math': {'Female': 3, 'Male': 1}
-# 'english': {'Female': 3, 'Male': 2}
-# 'science': {'Female': 3, 'Male': 2}
-#
-# Example of report
-# -----------------------------------
-# Math: Male = 1 Female = 3
-# English: Male = 2 Female = 3
-# Science: Male = 2 Female = 3
-#
 ###########################################################################################
-
-
 def each_class_genders():
     """
     Report Example:
