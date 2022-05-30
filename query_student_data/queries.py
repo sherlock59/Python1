@@ -170,7 +170,6 @@ Math, English, Science
     print('=' * 80)
     print("Sue Smith Class List")
     print('=' * 80)
-    print("Math, English, Science")
 
     sue_smith_classes = list()
     
@@ -331,42 +330,40 @@ def student_classes_same_as_sue_smith():
     13 Amy Hans
     41 Joe Jones
 
-    :return:
+    :return: None
     """
     print('=' * 80)
     print("Students Classes same as Sue Smith")
     print('=' * 80)
-    print('13 Amy Hans\n'
-          '41 Joe Jones')
 
     sue_smith_classes = set()
     same_as_sue_smith = list()
     students_classes = dict()
 
+    # build both sue_smith_classes set, and students_classes dict
+    for student_id, student_info in data.students.items():
+        student_classes_set = set()
+        first_name = student_info['firstName']
+        last_name = student_info['lastName']
 
-# build both sue_smith_classes set, and students_classes dict
-# --------------------------------------------------------------------------------------
-# for key (student id), value (student info dict) in 2D data.students dict items
-#    student_classes = set()
-#    first_name = student info dict firstName
-#    last_name = student info dict lastName
-#    for key (class name), value (class grades dict) in 2D data.grades items
-#        if student id (outer key) in class grades dict
-#            append class name (key) to student_classes set using add
-#    if name equals Sue Smith
-#       set sue_smith_classes list to student_classes
-#    else
-#		add the student id (outer key) students_classes value to student_classes
+        for class_name, class_grades in data.grades.items():
+            if student_id in class_grades.keys():
+                student_classes_set.add(class_name)
 
-# for loop for building same_as_sue_smith list
-# for key (student id), value (classes) in students_classes items
-#    if classes (value) equals sue_smith_classes
-#        append student id (key) to same_as_sue_smith list
+        if first_name == 'Sue' and last_name == 'Smith':
+            sue_smith_classes = student_classes_set
+        else:
+            students_classes.update({student_id: student_classes_set})
 
+    for student_id, classes in students_classes.items():
+        if classes == sue_smith_classes:
+            same_as_sue_smith.append(student_id)
 
-# sort same_as_sue_smith list
+    # sorting Sue Smith
+    same_as_sue_smith.sort()
 
-#list_students(same_as_sue_smith)
+    # list_students same as Sue Smith
+    list_students(same_as_sue_smith)
 
 
 ###########################################################################################
@@ -386,22 +383,23 @@ def students_with_low_grades():
     print('=' * 80)
     print("Students with Low Grades")
     print('=' * 80)
-    print("41 Joe Jones\n"
-          "45 Sue Johnson")
 
     low_grades = set()
 
     # building low_grades set
-    # --------------------------------------------------------------------------------------
-    # for key (student id), value (student info) in 2D data.students items
-    #    for key (class name), value (student grades dict) in data.grades items
-    #        if student id (outer key) in student grades dict (value)
-    #            grade total = sum of student grades student_id (outer key) to grade total
-    #	 grade count = len of student grades student_id (outer key) to grade count
-    #	 calculate average
-    #            if average < 70
-    #               add student id (outer key) to low_grades set
+    for student_id, student_info in data.students.items():
+        for class_name, student_grades in data.grades.items():
+            if student_id in student_grades.keys():
+                grade_total = sum(student_grades[student_id])
+                grade_count = len(student_grades[student_id])
 
-    # convert to list and sort
+                # calculating average
+                average = grade_total / grade_count
+                if average < 70:
+                    low_grades.add(student_id)
 
-    #list_students(low_grades_list)
+    # converting to list and sort
+    low_grades_list = list(low_grades)
+    low_grades_list.sort()
+
+    list_students(low_grades_list)
