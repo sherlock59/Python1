@@ -128,24 +128,30 @@ def each_class_genders():
     print("Each Class Genders")
     print('=' * 80)
 
+    class_genders = dict()
 
-    #class_genders = dict()
+    for class_name, class_grades in data.grades.items():
+        # set male and female counters to 0
+        male_counter = 0
+        female_counter = 0
 
-    # building the class_genders dictionary
-    print('Math: Male = 1 Female = 3\n'
-          'English: Male = 2 Female = 3\n'
-          'Science: Male = 2 Female = 3')
+        # for key (student id), value (student grades list) in class grades dict (value) items
+        for student_id, student_grades in class_grades.items():
+            # getting gender for the current student id and increment the correct gender counter
+            if data.students[student_id]['gender'].lower() == 'M'.lower():
+                male_counter += 1
+            elif data.students[student_id]['gender'].lower() == 'F'.lower():
+                female_counter = 1
 
-    #for class_name, class_grades in data.grades.items():
-    #	set male and female counters to 0
-    #	for key (student id), value (student grades list) in class grades dict (value) items
-    #		get gender for the current student id (key) from the 2D data.students dict
-    #		if to increment the correct gender counter
-    #
-    #	append to the class gender dict, using the class as the key, and...
-    #   a dict with female and male counts (see above example)
+        # dict with female and male counts
+        gender_counters = [male_counter, female_counter]
 
-    # for loop for displaying the dictionary
+        # appending to the class gender dict, using the class as the key, and...
+        class_genders.update({class_name: {'Male': male_counter, 'Female': female_counter}})
+
+        # for loop for displaying the dictionary
+    for class_name, gender_counters in class_genders.items():
+        print(f"{class_name:<7s} Male = {gender_counters['Male']} -- Female = {gender_counters['Female']}")
 
 
 ###########################################################################################
@@ -159,31 +165,43 @@ Sue Smith Class List
 ================================================================================
 Math, English, Science
 
-    :return:
+    :return: None
     """
     print('=' * 80)
     print("Sue Smith Class List")
     print('=' * 80)
     print("Math, English, Science")
 
-''' sue_smith_classes = list()
-    for student_id, student_info in data.items():
-        student_info.get('firstName'), student_info.get('lastName')
-        if 'firstName' == 'Sue' and 'lastName' == 'Smith':
-            for class_grades in data.grades.items():
-                if student_id in class_grades():
-                    sue_smith_classes.append(sue_smith_class_list())'''
+    sue_smith_classes = list()
+    
+    # for loop to 2d data dict items
+    for student_id, student_info in data.students.items():
+        
+        # getting first and last name from student info dict
+        first_name = student_info['firstName']
+        last_name = student_info['lastName']
+        
+        # setting 
+        if first_name.lower() == 'Sue'.lower() and last_name.lower() == 'Smith'.lower():
+            # for class value in 2D format
+            for clas, class_grades in data.grades.items():
+                # if student id (outer key) in class grades' dict (value)
+                if student_id in class_grades.keys():
+                    # add the class name (key) to sue_smith_classes list with the append method
+                    sue_smith_classes.append(clas)
+      
+    # sorting the list               
+    sue_smith_classes.sort()
 
-# for key (student id), value (student info dict) in 2d data.students dict items
-#	get first and last names from the student info dict (value)
-#	if the first name = Sue and the last name = Smith
-#		for key (class), value (class grades dict) in 2D data.grades dict items
-#			if student id (outer key) in class grades dict (value)
-#				add the class name (key) to sue_smith_classes list with the append method
+    # for loop for displaying sue_smith_classes list
+    for clas in sue_smith_classes:
+        if sue_smith_classes.index(clas) == len(sue_smith_classes) - 1:
+            print(clas, end='')
+        else:
+            print(clas, end=',')
+            
+    print()
 
-# sort the list
-
-# for loop for displaying sue_smith_classes list
 
 ###########################################################################################
 # Students in Science not Math
@@ -204,23 +222,19 @@ def students_in_science_not_math():
     print('=' * 80)
     print("Students in Science but not in Math")
     print('=' * 80)
-    print("31# Bob Smith\n",
-          "55# Sue Johnson")
 
-    ''' science_not_math = list()
-    for student_id in data.students.list():
-    if student_id in data.grades('Science') and student_id not in data.grades('Math'):
-    student_id.update(science_not_math)'''
+    science_not_math = list()
 
-    # building science_not_math list\
-    # --------------------------------------------------------------------------------------
-    # for key (student id) in 2d students dict keys
-    #	if student id (key) in data.grades Science and student id (key) NOT in data.grades Math
-    #		append student id (key) to science_not_math list
+    # building science_not_math list
+    for student_id in data.students.keys():
+        if student_id in data.grades['Science'].keys() and student_id not in data.grades['Math'].keys():
+            science_not_math.append(student_id)
 
-    # sort the list
+    # sorting the list
+    science_not_math.sort()
 
     # list_students(science_not_math)
+    list_students(science_not_math)
 
 
 ###########################################################################################
@@ -240,31 +254,32 @@ def non_sports_groups():
     print('=' * 80)
     print("NonSports Groups")
     print('=' * 80)
-    print('student council\n'
-          'national honor society')
-    '''
+
     sports = set()
     non_sports = list()
 
+    # for key (season), value (season sports set) in 2D data.sports dict items
+    for season, season_sports in data.sports.items():
+        # append the season sports set to the sports set using update method (multiple values)
+        sports.update(list(season_sports))
 
-# for key (season), value (season sports set) in 2D data.sports dict items
-for season, season_sports_set in data.sports.items():
-    # append the season sports set to the sports set using update method (multiple values)
-    season_sports_set.update()
+    # build the non_sports list
+    # --------------------------------------------------------------------------------------
+    # for key (student id), value (student info dict) in data.students dict items
+    for student_id, student_info in data.students.items():
+        # student groups = student info dict groups
+        student_groups = student_info['groups']
+        whats_left = student_groups - sports
 
-# build the non_sports list
-# --------------------------------------------------------------------------------------
-# for key (student id), value (student info dict) in data.students dict items
-for student_id, student_info in data.students.items():
-    #    student groups = student info dict groups
-    student_groups = student_info in data.groups'''
-#    whats left = student groups - sports set
-#    if len whats left (not 0)
-#        append *whats left to non_sports list using the * to convert the set to a tuple
+        if len(whats_left) != 0:
+            non_sports.append(*whats_left)
 
-# sort the non_sports list
+    # sorting the non_sports list
+    non_sports.sort()
 
-# for loop for displaying the non_sports list
+    # for loop for displaying the non_sports list
+    for sport in non_sports:
+        print(sport)
 
 
 ###########################################################################################
@@ -284,22 +299,24 @@ def all_seasons_sports_students():
     print('=' * 80)
     print("All Seasons Sports Students")
     print('=' * 80)
-    print("22 Sue Smith\n"
-          "41 Joe Jones")
 
     all_seasons = list()
 
-    # build the all season list
-    # --------------------------------------------------------------------------------------
-    '''for student_id, student_info in data.students.items():
-        student_groups = student_info.groups
-        if student_groups and data.sports('fall')\
-            and student_groups and data.sports('winter') \
-            and student_groups and data.sports('spring') \
-            and student_groups and data.sports('summer'):
-            student_id.append(all_seasons)
-            
-    list_students(all_seasons)'''
+    # building the all season list
+    for student_id, student_info in data.students.items():
+        student_groups = student_info['groups']
+
+        if student_groups & data.sports['fall']\
+                and student_groups & data.sports['winter'] \
+                and student_groups & data.sports['spring'] \
+                and student_groups & data.sports['summer']:
+            all_seasons.append(student_id)
+
+    # sorting the list
+    all_seasons.sort()
+
+    # listings
+    list_students(all_seasons)
 
 
 ###########################################################################################
