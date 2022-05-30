@@ -31,37 +31,30 @@ def student_information():
 
     # for key (student id), value (student info dict) in 2D data.students dict items
     for student_id, student_info in data.students.items():
+
         # 	display student id (key) and name (value)
         print('ID: ', student_id, student_info.get('firstName'), student_info.get('lastName'))
-
         print('\tGroups: ', end='')
+
         # 	for each group in student’s groups set
         for group in student_info.get('groups'):
-          # display the student’s group set using a print with end=’, '
-            print(group, end=', ')
-       # print(*student_info.get('groups'), sep=',') ### unpacks all the groups,
-        # and display them comma separated
 
+            # display the student’s group set using a print with end=’, '
+            print(group, end=', ')
+
+        # display them comma separated
         print()
 
         #  for key (class), value (class subject dict) in 2D subject dict items
         for subject, grades in data.grades.items():
+
             # if student id (outer key) in class grades dict
             if student_id in grades:
+
                 # display class (key), and student’s grade list (value)
                 print('\t' + subject, grades.get(student_id))
 
         print()
-
-
-#def all_sports(seasons):
- #   for season in seasons:
- #       print(season,
- #             data.sports.get(season).get('fall'),
- #             data.sports.get(season).get('winter'),
-  #            data.sports.get(season).get('spring'),
-  #            data.sports.get(season).get('summer')
-  #            )
 
 
 def all_sports_list():
@@ -87,26 +80,18 @@ def all_sports_list():
 
     sports = list()
 
-    print(sports)
+    # for key (season), value (season sports set) in 2D data.sports dict items
+    for season, season_sports in data.sports.items():
 
+        # appending the current season's sports set (value) to sports list nad extending function
+        sports.extend(list(season_sports))
 
-    #for season in data.sports.items():
-     #   print(season.get
-    #          season.get('spring'), season.get('summer'))
+    # sorting list
+    sports.sort()
 
-
-# for key (season), value (season sports set) in 2D data.sports dict items
-
-
-
-# and display them comma separated
-
-
-        #  append the current season’s sports set (value) to sports list by...
-        #  converting the set to a list and using the extend function to append it...
-        #  nested the list function inside the extend function to do this with one statement
-        # sort list
-        # for loop for displaying the list
+    # for loop for displaying the list
+    for sport in sports:
+        print(sport)
 
 
 ###########################################################################################
