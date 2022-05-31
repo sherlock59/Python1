@@ -5,7 +5,9 @@ Student Data System for managing student information (student id, first name, an
 This module contains the functions for displaying the main menu and running the menu options
 """
 
-#import student_maint
+
+import student_maint
+
 
 __author__ = 'Anaberdi Meredov'
 __version__ = '2.0'
@@ -15,7 +17,7 @@ __github__ = "https://github.com/sherlock59/Python1.git"
 # two horizontal line
 LINE_LENGTH = 40
 
-# Color variables
+# Color_variables
 HEADER = '\033[95m'
 OKBLUE = '\033[94m'
 OKCYAN = '\033[96m'
@@ -57,12 +59,19 @@ def main():
     :rtype: None
     """
 
+
+    # student 2D list
+    students_ls = []
+
+    #student id is 0 until the user add a student
+    student_id = 0
+
     while True:
         display_menu()
 
         while True:
             user_input = input(OKGREEN + 'Please enter a Menu # (Valid 0-4): ' + ENDC)
-            if not validate_int(user_input):
+            if not valid_int(user_input):
                 continue
             if int(user_input) > 4 or int(user_input) < 0:
                 print(FAIL + 'Invalid Input: Please enter a number greater or '
@@ -74,7 +83,17 @@ def main():
                 print('Bye!')
                 break
             elif int(user_input) == 1:
-                list_students()
+                list_students(students_ls)
+            elif int(user_input) == 2:
+                add_student(students_ls, student_id)
+                student_id += 1
+            elif int(user_input) == 3:
+                update_student(students_ls)
+            elif int(user_input) == 4:
+                delete_students(students_ls)
+
+            input(OKBLUE + "Press Enter to continue..." + ENDC)
+            print()
 
 
 if __name__ == '__main__':
