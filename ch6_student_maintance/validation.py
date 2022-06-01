@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-global FAIL, END
-
 
 def valid_yes_no(phrase):
     """
@@ -20,7 +18,7 @@ def valid_yes_no(phrase):
         elif user_input.lower() == 'n' or user_input.lower() == 'no':
             return False
         else:
-            print(FAIL + 'Invalid Input: Please enter a y=yes or n=no!' + END)
+            print('Invalid Input: Please enter a y=yes or n=no!')
 
 
 def valid_int(num):
@@ -34,4 +32,4 @@ def valid_int(num):
     if num.isnumeric():
         return True
     else:
-        print(FAIL + 'Invalid Input: Please enter a number!' + END)
+        print('Invalid Input: Please enter a number!')

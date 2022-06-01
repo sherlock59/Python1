@@ -2,7 +2,7 @@
 
 import validation
 import string
-from ch6_student_maintance.main import display_students
+from main import display_students
 global FAIL, END
 
 
@@ -16,7 +16,7 @@ def list_students(students):
     :return: None
     """
     if len(students) == 0:
-        print(FAIL + 'There are no students in list.' + END)
+        print('There are no students in list.')
         return
 
     display_students(students)
@@ -67,7 +67,7 @@ def update_students(students):
     return: None
     """
     if len(students) == 0:
-        print(FAIL + 'There are no students in list.' + END)
+        print('There are no students in list.')
         return
 
     while True:
@@ -77,10 +77,10 @@ def update_students(students):
 
     student_index = find_student_index(students, int(student_id))
     first_name = students[student_index][1]
-    last_name = students[student_index[2]]
+    last_name = students[student_index][2]
 
     if student_index == -1:
-        print(FAIL + f'Student ID #{student_id} was not found.' + END)
+        print(f'Student ID #{student_id} was not found.')
 
     else:
         phrase = f'Do you want to update Student ID #{student_id} {first_name} {last_name} (y/n): '
@@ -120,7 +120,7 @@ def delete_student(students):
     :return: None
     """
     if len(students == 0):
-        print(FAIL + 'There are no students in list.' + END)
+        print('There are no students in list.')
         return
 
     while True:
@@ -133,7 +133,7 @@ def delete_student(students):
     last_name = students[student_index][2]
 
     if student_index == -1:
-        print(FAIL + f'Student ID #{student_id} was not found.' + END)
+        print(f'Student ID #{student_id} was not found.')
 
     else:
         phrase = f'Please confirm deleting Student ID #{student_id} {first_name} {last_name} (y/n): '
