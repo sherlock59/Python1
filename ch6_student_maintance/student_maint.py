@@ -3,7 +3,6 @@
 import validation
 import string
 from main import display_students
-global FAIL, END
 
 
 def list_students(students):
@@ -119,7 +118,7 @@ def delete_student(students):
     :type students: 2d list
     :return: None
     """
-    if len(students == 0):
+    if len(students) == 0:
         print('There are no students in list.')
         return
 

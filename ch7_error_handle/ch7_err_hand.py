@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+"""
+one script that include multiple functions to read an input file
+that outputs both valid and invalid data files.
+"""
+
+__author__ = 'Anaberdi Meredov'
+__version__ = '2.0'
+__copyright__ = "Copyright 2022.05.12, Chapter 7 assignment"
+__github__ = "https://github.com/sherlock59/Python1.git"
 
 import re
 import csv
@@ -9,6 +18,11 @@ INVALID_FILENAME = 'invalid.csv'
 
 
 def read_file(filename):
+    """
+    Reads files and organizes its postion as well as loops for rows to print valid and invalid values accordingly
+    :param filename:
+    :return:  None
+    """
     with open(filename, mode='r', newline='') as input_file, open(VALID_FILENAME, mode='a', newline='') \
              as valid_file, open(INVALID_FILENAME, mode='a', newline='') as invalid_file:
         input_reader = csv.reader(input_file, delimiter='|')
@@ -59,6 +73,10 @@ def read_file(filename):
 
 
 def main():
+    """
+    This main does the job necessary to validate and show invalid outcome
+    :return: None
+    """
     try:
         read_file(INPUT_FILENAME)
 
